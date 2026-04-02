@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-service
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ include "webapps.fullname" . }}-apache
+  ports:
+    - protocol: TCP
+      port: {{ .Values.apache.service.port }}
+      targetPort: {{ .Values.apache.service.targetPort }}

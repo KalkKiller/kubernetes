@@ -1,0 +1,21 @@
+nginx:
+  replicaCount: 2
+  image:
+    repository: nginx
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: NodePort
+    port: 80
+    targetPort: 80
+    nodePort: 30080
+
+apache:
+  replicaCount: 2
+  image:
+    repository: httpd
+    tag: "2.4"
+    pullPolicy: IfNotPresent
+  service:
+    port: 80
+    targetPort: 80
